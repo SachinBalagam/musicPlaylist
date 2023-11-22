@@ -10,3 +10,67 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/music-playlist/music-playlist-Edsheeran-bg.png');
+  background-size: cover;
+  min-height: 50vh;
+  padding: 10px;
+  color: #ffffff;
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.name {
+  margin-bottom: 0;
+  font-size: 50px;
+  font-weight: 500;
+}
+.profession {
+  margin-top: 0;
+  font-size: 30px;
+  font-weight: 300;
+}
+.bottom-container {
+  background-color: #152850;
+  min-height: 50vh;
+  padding: 10px;
+}
+.heading-and-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sub-heading {
+  font-family: 'Roboto';
+  color: #ffffff;
+  font-size: 30px;
+}
+.input-container {
+  background-color: #152850;
+  border: 1px solid #cbd5e1;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+}
+.input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #cbd5e1;
+}
+.playlist-container {
+  list-style-type: none;
+  padding-left: 0;
+}
+.no-list-view {
+  font-family: 'Roboto';
+  color: #ffffff;
+  font-size: 30px;
+  text-align: center;
+}

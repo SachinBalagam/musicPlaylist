@@ -1,3 +1,6 @@
+import {Component} from 'react'
+import {FaSearch} from 'react-icons/fa'
+import SongsList from './SongsList/index'
 import './App.css'
 
 const initialTracksList = [
@@ -84,7 +87,62 @@ const initialTracksList = [
 ]
 
 // Replace your code here
+class App extends Component {
+  state = {tracksList: initialTracksList, searchInput: ''}
 
-const App = () => <h1>Hello World!</h1>
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  onDeleteClick = id => {
+    const {tracksList} = this.state
+    const filteredList = tracksList.filter(each => each.id !== id)
+    this.setState({tracksList: filteredList})
+  }
+
+  render() {
+    const {searchInput, tracksList} = this.state
+    const filteredTrackList = tracksList.filter(each =>
+      each.name.toLowerCase().includes(searchInput.toLowerCase()),
+    )
+    console.log(filteredTrackList)
+    return (
+      <div className="app-container">
+        <div className="main-container">
+          <h1 className="name">Ed Sheeran</h1>
+          <p className="profession">Singer</p>
+        </div>
+        <div className="bottom-container">
+          <div className="heading-and-search-container">
+            <h1 className="sub-heading">Songs Playlist</h1>
+            <div className="input-container">
+              <input
+                type="search"
+                placeholder="Search"
+                className="input"
+                onChange={this.onChangeSearchInput}
+                value={searchInput}
+              />
+              <FaSearch />
+            </div>
+          </div>
+          {filteredTrackList.length >= 1 ? (
+            <ul className="playlist-container">
+              {filteredTrackList.map(each => (
+                <SongsList
+                  key={each.id}
+                  data={each}
+                  onDeleteClick={this.onDeleteClick}
+                />
+              ))}
+            </ul>
+          ) : (
+            <p className="no-list-view">No Songs Found</p>
+          )}
+        </div>
+      </div>
+    )
+  }
+}
 
 export default App
